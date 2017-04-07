@@ -1,59 +1,36 @@
 document.addEventListener("DOMContentLoaded", function(event) {
   document.getElementById('my-button').onclick = (function() {
-    document.getElementsByTagName('audio')[0].play();
-    document.getElementsByTagName('span')[0].innerHTML = 'Hell world.';
+    document.getElementById('my-audio').play();
+    document.getElementById('my-button-span').innerHTML = 'Hell world.';
+    imageShower();
+    resetText('my-button-span', 'Hello Sex');
     return false;
   });
-  // var audioFiles = [
-  //     "https://s3.amazonaws.com/russell-personal/fuck-you-audio/185634__jorickhoofd__male-screaming-fuck-you.mp3",
-  //     // "https://s3.amazonaws.com/russell-personal/fuck-you-audio/185634__jorickhoofd__male-screaming-fuck-you.ogg",
-  //     // "https://s3.amazonaws.com/russell-personal/fuck-you-audio/185634__jorickhoofd__male-screaming-fuck-you.wav",
-  // ];
+  document.getElementById('their-button').onclick = (function() {
+    document.getElementById('their-audio').play();
+    document.getElementById('their-button-span').innerHTML = 'Bitchception.';
+    resetText('their-button-span', 'Konichiwa Bitches');
+    return false;
+  });
 
-  // function preloadAudio(url) {
-  //     var audio = new Audio();
-  //     // once this file loads, it will call loadedAudio()
-  //     // the file will be kept by the browser as cache
-  //     audio.addEventListener('canplaythrough', loadedAudio, false);
-  //     audio.src = url;
-  // }
+  function imageShower(){
+    const img = document.createElement("img");
+    img.src = "https://s3.amazonaws.com/russell-personal/full-body-virtual-reality-suit-is-now-a-real-thing_1.jpg";
 
-  // var loaded = 0;
-  // function loadedAudio() {
-  //     // this will be called every time an audio file is loaded
-  //     // we keep track of the loaded files vs the requested files
-  //     loaded++;
-  //     if (loaded == audioFiles.length){
-  //       // all have loaded
-  //       init();
-  //     }
-  // }
+    document.getElementById('img1').appendChild(img);
+    document.getElementById('img1').style.display = "visible"
+    hideImage("img1");
+  };
 
-  // var player = document.getElementById('player');
-  // function play(index) {
-  //     player.src = audioFiles[index];
-  //     player.play();
-  // }
+  function hideImage(id){
+    setTimeout(function() {
+      document.getElementById(id).style.display = "none";
+    }, 3000);
+  };
 
-  // function init() {
-  //     // do your stuff here, audio has been loaded
-  //     // for example, play all files one after the other
-  //     var i = 0;
-  //     // once the player ends, play the next one
-  //     player.onended = function() {
-  //       i++;
-  //         if (i >= audioFiles.length) {
-  //             // end
-  //             return;
-  //         }
-  //       play(i);
-  //     };
-  //     // play the first file
-  //     play(i);
-  // }
-
-  // // we start preloading all the audio files
-  // for (var i in audioFiles) {
-  //     preloadAudio(audioFiles[i]);
-  // }
+  function resetText(id, text){
+    setTimeout(function() {
+      document.getElementById(id).innerHTML = text;
+    }, 3500);
+  };
 });
